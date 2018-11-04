@@ -1,7 +1,7 @@
 'use strict';
 
 class App {
-    static run(){
+    static run() {
         let tableUsers = Users.getTable();
         console.log('tableUsers', tableUsers);
         document.querySelector('.mi-users-add').addEventListener('click', (event) => {
@@ -18,21 +18,28 @@ class App {
             }
         });
     }
-    static getUrlWithParams(baseUrl, params){
+
+    static getUrlWithParams(baseUrl, params) {
         //let url = baseUrl + '?';
-        let paramsStr = '';
-        for(let parName in params){
-            paramsStr += (paramsStr === '' ? '?' : '&');
-            paramsStr += encodeURIComponent(parName) + '=' + encodeURIComponent(params[parName]);
-        }
-        let result = baseUrl + paramsStr;
+        let paramsStr = App.getUrlParams(params);
+        let result = baseUrl + (paramsStr === '' ? '' : '?') + paramsStr;
         return result;
     }
-    static getFormParams(formEl){
+
+    static getUrlParams(params) {
+        let paramsStr = '';
+        for (let parName in params) {
+            paramsStr += (paramsStr === '' ? '' : '&');
+            paramsStr += encodeURIComponent(parName) + '=' + encodeURIComponent(params[parName]);
+        }
+        return paramsStr;
+    }
+
+    static getFormParams(formEl) {
         let result = {};
         console.log(formEl.elements);
-        [].forEach.call(formEl.elements, (formItemEl)=>{
-            if (formItemEl.nodeName === 'INPUT'){
+        [].forEach.call(formEl.elements, (formItemEl) => {
+            if (formItemEl.nodeName === 'INPUT') {
                 result[formItemEl.name] = formItemEl.value;
             }
         });

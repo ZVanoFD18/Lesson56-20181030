@@ -95,12 +95,12 @@ class Users {
         console.log('remove');
         let id = domElButtonRemove.closest('tr').querySelector('.user-id').innerHTML;
         console.log(id);
-        let xhr = new XMLHttpRequest();
         let url = App.getUrlWithParams('http://bot.big-maker.com/user.php' ,{
             id : id,
             remove : 1
         });
 
+        let xhr = new XMLHttpRequest();
         xhr.open('GET', url);
         xhr.send();
         xhr.addEventListener('readystatechange', () => {
