@@ -1,0 +1,71 @@
+.hidden{
+    display: none;
+    visibility: hidden;
+}
+table.users{
+    border: 1px solid red;
+    width: 100%;
+}
+/*@todo: Заменить стили на селекторы к table.users*/
+
+table, thead, tfoot, tbody, th, td, tr {
+    border: 1px solid black;
+}
+table.users>tbody>tr:hover{
+    background-color: #cccccc;
+}
+table.users>tbody>tr>td{
+    padding: 0 5px;
+}
+table.users>tbody>tr>td.user-id{
+    font-weight: bold;
+    text-align: right;
+}
+/*table.users>*{*/
+    /*border: 1px solid red;*/
+/*}*/
+
+.mi {
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.mi:hover {
+    font-weight: bold;
+    border: 1px solid red;
+    border-radius: 3px;
+}
+ .actions-item:hover
+{
+    border: 1px solid red;
+    border-radius: 3px;
+}
+.actions-item{
+    display: inline-block;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin-left: 5px;
+    --width: 50px;
+}
+
+#user-iu{
+    width: 400px;
+    border: 1px solid gray;
+    position: fixed;
+    top:40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: #cccccc;
+}
+#user-iu .title{
+    background-color: aqua;
+    font-weight: bold;
+}
+#user-iu label{
+    display: block;
+}
+#user-iu .buttons{
+    text-align: center;
+}
+#user-iu button{
+    display: inline-block;
+}

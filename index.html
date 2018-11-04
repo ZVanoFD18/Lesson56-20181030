@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson56-20181030-homework</title>
+    <!--<link rel="stylesheet" href="css/reset.css">-->
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/App.js"></script>
+    <script src="js/Users.js"></script>
+    <script src="js/User.js"></script>
+</head>
+<body>
+<div class="page-menu">
+    <ul>
+        <li><span class="mi mi-users-load">Загрузить список пользователей</span></li>
+    </ul>
+    <ul>
+        <li><span class="mi mi-users-add">Добавить пользователя</span></li>
+    </ul>
+</div>
+<table class="users" border="1">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>Имя</th>
+        <th>e-mail</th>
+        <th>Телефон</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>id</td>
+        <td>Имя</td>
+        <td>e-mail</td>
+        <td>Телефон</td>
+        <td>
+            <div class="actions-item action-edit">edit</div>
+            <div class="actions-item action-remove">remove</div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div id="user-iu" class="hidden">
+    <div class="title">Добавление</div>
+    <form action="">
+        <input type="hidden" name="id">
+        <label for="">
+            name:
+            <input type="text" name="name">
+        </label>
+        <label for="">
+            username:
+            <input type="text" name="username">
+        </label>
+        <label for="">
+            email:
+            <input type="text" name="email">
+        </label>
+        <fieldset>
+            <legend>address</legend>
+            <label for="">
+                street:
+                <input type="text" name="street">
+            </label>
+            <label for="">
+                suite:
+                <input type="text" name="suite">
+            </label>
+            <label for="">
+                city:
+                <input type="text" name="city">
+            </label>
+            <label for="">
+                zipcode:
+                <input type="text" name="zipcode">
+            </label>
+            <fieldset>
+                <legend>geo</legend>
+                <label for="">
+                    lat:
+                    <input type="text" name="lat">
+                </label>
+                <label for="">
+                    lng:
+                    <input type="text" name="lng">
+                </label>
+            </fieldset>
+        </fieldset>
+        <label for="">
+            phone:
+            <input type="text" name="phone">
+        </label>
+        <label for="">
+            website:
+            <input type="text" name="website">
+        </label>
+
+        <fieldset>
+            <legend>company</legend>
+            <label for="">
+                companyName:
+                <input type="text" name="companyName">
+            </label>
+            <label for="">
+                catchPhrase:
+                <input type="text" name="catchPhrase">
+            </label>
+            <label for="">
+                bs:
+                <input type="text" name="bs">
+            </label>
+        </fieldset>
+
+
+        <div class="buttons">
+            <button class="button-save">Сохранить</button>
+            <button class="button-cancel">Отмена</button>
+        </div>
+    </form>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        App.run();
+    });
+</script>
+</body>
+</html>
