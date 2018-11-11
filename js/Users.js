@@ -15,12 +15,14 @@ class Users {
         console.log('doLoad');
         let xhr = new XMLHttpRequest();
         xhr.open('GET', 'http://bot.big-maker.com/users.php');
+        Mask.show('Загрузка списка пользователей...');
         xhr.send();
         xhr.addEventListener('readystatechange', () => {
             console.log('readystatechange', arguments);
             if (xhr.readyState !== 4) {
                 return;
             }
+            Mask.hide();
             let json = JSON.parse(xhr.responseText);
             Users.renderTable(json);
         });
@@ -84,11 +86,12 @@ class Users {
 
     static doAdd() {
         // console.log('add');
-        User.showAdd()
+        User.showWindowAdd()
     }
 
     static onClickEdit(domEl) {
-        console.log('edit');
+        let userId = domEl.closest('tr').querySelector('.user-id').textContent;
+        User.showWindowEdit(userId);
     }
 
     static onClickRemove(domElButtonRemove) {
@@ -102,12 +105,14 @@ class Users {
 
         let xhr = new XMLHttpRequest();
         xhr.open('GET', url);
+        Mask.show('Удаление пользователя...');
         xhr.send();
         xhr.addEventListener('readystatechange', () => {
             console.log('readystatechange', arguments);
             if (xhr.readyState !== 4) {
                 return;
             }
+            Mask.hide();
             let json = JSON.parse(xhr.responseText);
             console.log(json);
             if (json.result == 1){
@@ -118,10 +123,4 @@ class Users {
             Users.doLoadList();
         });
     }
-
-    static doEdit(id) {
-
-    }
-
-
 }

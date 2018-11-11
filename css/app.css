@@ -2,6 +2,31 @@
     display: none;
     visibility: hidden;
 }
+#id-mask .mask-background{
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: gray;
+    opacity: 0.5;
+}
+#id-mask .mask-text {
+    position: fixed;
+    z-index: 9998;
+    font-size: 2rem;
+    text-align: center;
+    color: red;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: inline-block;
+    padding: 15px 30px;
+    border: 3px double gray ;
+    border-radius: 15px;
+}
+
 table.users{
     border: 1px solid red;
     width: 100%;

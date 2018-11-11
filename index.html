@@ -6,10 +6,15 @@
     <!--<link rel="stylesheet" href="css/reset.css">-->
     <link rel="stylesheet" href="css/app.css">
     <script src="js/App.js"></script>
+    <script src="js/Mask.js"></script>
     <script src="js/Users.js"></script>
     <script src="js/User.js"></script>
 </head>
 <body>
+<div id="id-mask" class="hidden">
+    <div class="mask-background"></div>
+    <div class="mask-text">Загрузка...</div>
+</div>
 <div class="page-menu">
     <ul>
         <li><span class="mi mi-users-load">Загрузить список пользователей</span></li>
@@ -111,8 +116,6 @@
                 <input type="text" name="bs">
             </label>
         </fieldset>
-
-
         <div class="buttons">
             <button class="button-save">Сохранить</button>
             <button class="button-cancel">Отмена</button>

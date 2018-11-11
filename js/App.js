@@ -26,11 +26,16 @@ class App {
         return result;
     }
 
-    static getUrlParams(params) {
+    static getUrlParams(params, isEncodeUriComponents) {
+        isEncodeUriComponents = typeof(isEncodeUriComponents) === 'boolean' ? isEncodeUriComponents :  true ;
         let paramsStr = '';
         for (let parName in params) {
             paramsStr += (paramsStr === '' ? '' : '&');
-            paramsStr += encodeURIComponent(parName) + '=' + encodeURIComponent(params[parName]);
+            if (isEncodeUriComponents){
+                paramsStr += encodeURIComponent(parName) + '=' + encodeURIComponent(params[parName]);
+            } else {
+                paramsStr += parName + '=' + params[parName];
+            }
         }
         return paramsStr;
     }
@@ -45,5 +50,6 @@ class App {
         });
         return result;
     }
+
 
 }
