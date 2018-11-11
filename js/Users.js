@@ -1,33 +1,46 @@
 'use strict';
-let sampleUser = {
-    "name": "Vasya",
-    "email": "vasya@mail.ru",
-    "phone": "123123432",
-    "id": 4
-}
 
+/**
+ * Статический класс, группирующий функциональность "Работа со списком пользователей".
+ */
 class Users {
     static getTable() {
         return document.querySelector('table.users');
     }
 
+    /**
+     * Выполняет действие "Загрузка списка пользователей"
+     */
     static doLoadList() {
-        console.log('doLoad');
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://bot.big-maker.com/users.php');
         Mask.show('Загрузка списка пользователей...');
-        xhr.send();
-        xhr.addEventListener('readystatechange', () => {
-            console.log('readystatechange', arguments);
-            if (xhr.readyState !== 4) {
-                return;
-            }
+        Users.doAjaxLoadList((isSuccess, json) => {
             Mask.hide();
-            let json = JSON.parse(xhr.responseText);
             Users.renderTable(json);
         });
     }
 
+    /**
+     * Выполняет AJAX "Загрузка списка пользователей"
+     * @param callback
+     * @param scope
+     */
+    static doAjaxLoadList(callback, scope) {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://bot.big-maker.com/users.php');
+        xhr.send();
+        xhr.addEventListener('readystatechange', () => {
+            if (xhr.readyState !== 4) {
+                return;
+            }
+            let json = JSON.parse(xhr.responseText);
+            callback.call(scope || this, true, json);
+        });
+    }
+
+    /**
+     * Выполняет действие "Сгенерировать таблицу пользователей на основании JSON".
+     * @param json
+     */
     static renderTable(json) {
         let table = Users.getTable(),
             tBody = table.querySelector('tbody');
@@ -39,6 +52,11 @@ class Users {
         });
     }
 
+    /**
+     * Создает DOM-элемент "Строка" таблицы "Список пользователей".
+     * @param data
+     * @returns {HTMLElement}
+     */
     static createRow(data) {
         if (!('id' in data)) {
             throw new Error('Id обязательно должен быть');
@@ -85,7 +103,6 @@ class Users {
     }
 
     static doAdd() {
-        // console.log('add');
         User.showWindowAdd()
     }
 
@@ -95,29 +112,14 @@ class Users {
     }
 
     static onClickRemove(domElButtonRemove) {
-        console.log('remove');
-        let id = domElButtonRemove.closest('tr').querySelector('.user-id').innerHTML;
-        console.log(id);
-        let url = App.getUrlWithParams('http://bot.big-maker.com/user.php' ,{
-            id : id,
-            remove : 1
-        });
-
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', url);
+        let id = domElButtonRemove.closest('tr').querySelector('.user-id').textContent;
+        console.log('remove', id);
         Mask.show('Удаление пользователя...');
-        xhr.send();
-        xhr.addEventListener('readystatechange', () => {
-            console.log('readystatechange', arguments);
-            if (xhr.readyState !== 4) {
-                return;
-            }
+        User.doAjaxRemoveUser({
+            id: id
+        }, (isSuccess, json) => {
             Mask.hide();
-            let json = JSON.parse(xhr.responseText);
-            console.log(json);
-            if (json.result == 1){
-                Users.doLoadList();
-            } else if (json.error){
+            if (json.result !== 1) {
                 alert(json.error)
             }
             Users.doLoadList();

@@ -1,8 +1,9 @@
-.hidden{
+.hidden {
     display: none;
     visibility: hidden;
 }
-#id-mask .mask-background{
+
+#id-mask .mask-background {
     z-index: 9999;
     position: fixed;
     top: 0;
@@ -12,6 +13,7 @@
     background-color: gray;
     opacity: 0.5;
 }
+
 #id-mask .mask-text {
     position: fixed;
     z-index: 9998;
@@ -23,74 +25,93 @@
     transform: translateX(-50%) translateY(-50%);
     display: inline-block;
     padding: 15px 30px;
-    border: 3px double gray ;
+    border: 3px double gray;
     border-radius: 15px;
 }
 
-table.users{
-    border: 1px solid red;
+table.users {
+    --border: 1px solid red;
     width: 100%;
 }
-/*@todo: Заменить стили на селекторы к table.users*/
 
-table, thead, tfoot, tbody, th, td, tr {
+table.users {
     border: 1px solid black;
 }
-table.users>tbody>tr:hover{
-    background-color: #cccccc;
+
+table.users > tbody > tr:hover {
+    background-color: cornsilk;
 }
-table.users>tbody>tr>td{
+
+table.users > tbody > tr > td {
     padding: 0 5px;
 }
-table.users>tbody>tr>td.user-id{
+
+table.users > tbody > tr > td.user-id {
     font-weight: bold;
     text-align: right;
 }
-/*table.users>*{*/
-    /*border: 1px solid red;*/
-/*}*/
 
+.page-menu{
+    margin: 5px 0;
+}
+.page-menu>ul{
+    padding: 10px 0;
+}
+
+.page-menu>ul
+, .page-menu>ul>li
+{
+    display: inline;
+}
 .mi {
     cursor: pointer;
     box-sizing: border-box;
+    display: inline-block;
+    padding: 5px 30px;
+    border: 1px solid black;
+    border-radius: 6px;
 }
+
 .mi:hover {
-    font-weight: bold;
-    border: 1px solid red;
-    border-radius: 3px;
+    background-color: aquamarine;
 }
- .actions-item:hover
-{
-    border: 1px solid red;
-    border-radius: 3px;
+
+.actions-item:hover {
+    border-radius: 6px;
+    background-color: aquamarine;
 }
-.actions-item{
+
+.actions-item {
     display: inline-block;
     cursor: pointer;
     box-sizing: border-box;
     margin-left: 5px;
-    --width: 50px;
+    padding: 3px    ;
 }
 
-#user-iu{
+#user-iu {
     width: 400px;
     border: 1px solid gray;
     position: fixed;
-    top:40%;
+    top: 40%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     background-color: #cccccc;
 }
-#user-iu .title{
-    background-color: aqua;
+
+#user-iu .title {
+    background-color: aquamarine;
     font-weight: bold;
 }
-#user-iu label{
+
+#user-iu label {
     display: block;
 }
-#user-iu .buttons{
+
+#user-iu .buttons {
     text-align: center;
 }
-#user-iu button{
+
+#user-iu button {
     display: inline-block;
 }

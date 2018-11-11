@@ -3,7 +3,6 @@
 class App {
     static run() {
         let tableUsers = Users.getTable();
-        console.log('tableUsers', tableUsers);
         document.querySelector('.mi-users-add').addEventListener('click', (event) => {
             Users.doAdd(event.target);
         });
@@ -42,7 +41,6 @@ class App {
 
     static getFormParams(formEl) {
         let result = {};
-        console.log(formEl.elements);
         [].forEach.call(formEl.elements, (formItemEl) => {
             if (formItemEl.nodeName === 'INPUT') {
                 result[formItemEl.name] = formItemEl.value;
