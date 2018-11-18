@@ -1,6 +1,10 @@
 'use strict';
 
 class App {
+    /**
+     * Точка входа в приложение.
+     * Здесь привязываются обработчики событий к главным DOM-элементам.
+     */
     static run() {
         let tableUsers = Users.getTable();
         document.querySelector('.mi-users-add').addEventListener('click', (event) => {
@@ -18,6 +22,12 @@ class App {
         });
     }
 
+    /**
+     * Возвращает URI-encoded URL с параметрами для вызова GET-запроса
+     * @param baseUrl
+     * @param params
+     * @returns {string}
+     */
     static getUrlWithParams(baseUrl, params) {
         //let url = baseUrl + '?';
         let paramsStr = App.getUrlParams(params);
@@ -25,6 +35,13 @@ class App {
         return result;
     }
 
+    /**
+     * Возвращает URI-encoded параметры для вызова POST-запроса в
+     * формате "Content-Type : application/x-www-form-urlencoded"
+     * @param params
+     * @param isEncodeUriComponents
+     * @returns {string}
+     */
     static getUrlParams(params, isEncodeUriComponents) {
         isEncodeUriComponents = typeof(isEncodeUriComponents) === 'boolean' ? isEncodeUriComponents :  true ;
         let paramsStr = '';
@@ -39,6 +56,10 @@ class App {
         return paramsStr;
     }
 
+    /**
+     * Возвращает значения элементов HTML-формы в виде ассоциативного массива.
+     * @param formEl
+     */
     static getFormParams(formEl) {
         let result = {};
         [].forEach.call(formEl.elements, (formItemEl) => {

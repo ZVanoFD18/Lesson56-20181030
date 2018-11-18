@@ -34,14 +34,17 @@
 }
 
 table.users {
-    --border: 1px solid red;
     width: 100%;
 }
 
 table.users {
     border: 1px solid black;
 }
-
+table.users > thead > tr > th
+, table.users > tbody > tr > td
+{
+    border: 1px solid black;
+}
 table.users > tbody > tr:hover {
     background-color: cornsilk;
 }
@@ -94,28 +97,67 @@ table.users > tbody > tr > td.user-id {
 }
 
 #user-iu {
-    width: 400px;
+    width: 550px;
     border: 1px solid gray;
     position: fixed;
     top: 40%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    background-color: #cccccc;
+    background-color: #CCCEFF;
+}
+
+.user-iu-inputs{
+    height: 300px;
+    overflow: auto;
 }
 
 #user-iu .title {
     background-color: aquamarine;
     font-weight: bold;
 }
-
-#user-iu label {
+#user-iu label{
     display: block;
+    height: 1.8rem;
+}
+#user-iu .label-container {
+    display: inline-block;
+    margin-left: 1%;
+    width: 20%;
+    margin-top: 6px;
+}
+#user-iu input{
+    width: 75%;
+    display: inline-block;
+    margin-right: 1%;
 }
 
-#user-iu .buttons {
+.user-iu-buttons {
+    padding: 0.3rem 0px;
+    margin: 0.3rem;
+    border: 1px dashed;
     text-align: center;
 }
 
 #user-iu button {
     display: inline-block;
+}
+
+/**
+ * Стили по умолчанию
+ */
+fieldset {
+    display: block;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 3px;
+    margin-bottom: 5px;
+    padding-bottom: 6px;
+    min-inline-size: min-content;
+    border-width: 2px;
+    border-style: groove;
+    border-color: threedface;
+    border-image: initial;
+}
+legend{
+    padding: 0px 3px;
 }

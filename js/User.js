@@ -118,10 +118,12 @@ class User {
                         formItemEl.value = json.address.geo[formItemEl.name];
                     }
                 } else if (['companyName', 'catchPhrase'].indexOf(formItemEl.name) >= 0) {
-                    if (formItemEl.name === 'companyName') {
-                        formItemEl.value = json.company.name;
-                    } else if (json.company && formItemEl.name in json.company) {
-                        formItemEl.value = json.company[formItemEl.name];
+                    if ('company' in json){
+                        if (formItemEl.name === 'companyName') {
+                            formItemEl.value = json.company.name;
+                        } else if (json.company && formItemEl.name in json.company) {
+                            formItemEl.value = json.company[formItemEl.name];
+                        }
                     }
                 } else {
                     if (formItemEl.name in json) {
