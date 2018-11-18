@@ -117,7 +117,7 @@ table.users > tbody > tr > td.user-id {
 }
 #user-iu label{
     display: block;
-    height: 1.8rem;
+    height: 2.4rem;
 }
 #user-iu .label-container {
     display: inline-block;
@@ -140,6 +140,11 @@ table.users > tbody > tr > td.user-id {
 
 #user-iu button {
     display: inline-block;
+}
+.sv-error{
+    font-size: 0.8rem;
+    text-align: center;
+    color: red;
 }
 
 /**

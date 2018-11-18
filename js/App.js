@@ -20,6 +20,7 @@ class App {
                 Users.onClickRemove(event.target);
             }
         });
+        SV.bindForm(document.querySelector('#user-iu form'));
     }
 
     /**

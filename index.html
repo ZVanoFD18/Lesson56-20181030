@@ -9,6 +9,16 @@
     <script src="js/Mask.js"></script>
     <script src="js/Users.js"></script>
     <script src="js/User.js"></script>
+    <script src="vendor/sv/Sv.js"></script>
+    <script src="vendor/sv/SvBaseValidator.js"></script>
+    <script src="vendor/sv/SvBaseResult.js"></script>
+    <script src="vendor/sv/validators/SvValidatorEMail.js"></script>
+    <script src="vendor/sv/validators/SvValidatorInn.js"></script>
+    <script src="vendor/sv/validators/SvValidatorPhoneInnational.js"></script>
+    <script src="vendor/sv/validators/SvValidatorPassword.js"></script>
+    <script src="vendor/sv/validators/SvValidatorLogin.js"></script>
+    <script src="vendor/sv/validators/SvValidatorNumber.js"></script>
+    <script src="vendor/sv/validators/SvValidatorUrl.js"></script>
 </head>
 <body>
 <div id="id-mask" class="hidden">
@@ -59,11 +69,11 @@
             </label>
             <label for="">
                 <div class="label-container">username:</div>
-                <input type="text" name="username">
+                <input type="text" name="username" >
             </label>
             <label for="">
                 <div class="label-container">email:</div>
-                <input type="text" name="email">
+                <input type="text" name="email" data-v-name="eMail">
             </label>
             <fieldset>
                 <legend>address</legend>
@@ -81,7 +91,7 @@
                 </label>
                 <label for="">
                     <div class="label-container">zipcode:</div>
-                    <input type="text" name="zipcode">
+                    <input type="text" name="zipcode" data-v-name="number">
                 </label>
                 <fieldset>
                     <legend>geo</legend>
@@ -97,11 +107,11 @@
             </fieldset>
             <label for="">
                 <div class="label-container">phone:</div>
-                <input type="text" name="phone">
+                <input type="text" name="phone" data-v-name="phoneInnational">
             </label>
             <label for="">
                 <div class="label-container">website:</div>
-                <input type="text" name="website">
+                <input type="text" name="website" data-v-name="url">
             </label>
 
             <fieldset>
